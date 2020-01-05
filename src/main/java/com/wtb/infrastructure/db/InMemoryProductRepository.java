@@ -10,8 +10,7 @@ import java.util.HashMap;
 @Component
 public class InMemoryProductRepository implements ProductRepository {
 
-
-    private HashMap<Long, Product> productHashMap = new HashMap<Long, Product>();
+    private HashMap<Long, Product> productHashMap = new HashMap<>();
 
     private void addProductToHashMap() {
         productHashMap.put(1L, new Product(1L, 1L, TrashBin.PAPER));
