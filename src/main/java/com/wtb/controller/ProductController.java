@@ -1,5 +1,7 @@
 package com.wtb.controller;
 
+import com.wtb.application.shortResponse.businessusecase.Bin;
+import com.wtb.application.shortResponse.businessusecase.ShortResponseService;
 import com.wtb.domain.product.Product;
 import com.wtb.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ShortResponseService shortResponseService;
 
     @ResponseBody
     @GetMapping()
-    public Product productByBarcode(@RequestParam(value = "barcode",required = true) Long barcode){
-        return productRepository.findByBarcode(barcode);
+    public Bin binByBarcode(@RequestParam(value = "barcode",required = true) Long barcode){
+        return shortResponseService.create(barcode);
     }
 }
