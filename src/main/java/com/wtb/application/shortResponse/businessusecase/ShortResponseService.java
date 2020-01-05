@@ -10,7 +10,12 @@ public class ShortResponseService {
 
     private final ProductRepository productRepository;
 
-    public Bin create(Long barcode){
-        return new Bin(productRepository.findByBarcode(barcode).getTrashBin().ordinal());
+    public Bin create(String barcode) {
+        try {
+            return new Bin(productRepository.findByBarcode(Long.parseLong(barcode))
+                    .getTrashBin().ordinal());
+        } catch (Exception e) {
+            return new Bin(-1);
+        }
     }
 }
