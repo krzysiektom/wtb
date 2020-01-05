@@ -14,7 +14,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
     private void addProductToHashMap() {
         productHashMap.put(1L, new Product(1L, 1L, TrashBin.PAPER));
-        productHashMap.put(2L, new Product(1L, 2L, TrashBin.PLASTIC));
+        productHashMap.put(2L, new Product(2L, 2L, TrashBin.PLASTIC));
     }
 
     @Override
