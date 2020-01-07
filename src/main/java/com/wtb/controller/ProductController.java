@@ -18,7 +18,7 @@ public class ProductController {
 
     @ResponseBody
     @GetMapping()
-    public Bin binByBarcode(@RequestParam(value = "barcode") String barcode){
+    public Bin binByBarcode(@RequestParam(value = "barcode") String barcode) {
         return shortResponseService.create(barcode);
     }
 }

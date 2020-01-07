@@ -24,7 +24,7 @@ class ShortResponseServiceTest {
     @Mock
     private ProductRepository mockRepository;
 
-    Product product = new Product(1L, 1L, TrashBin.PAPER);
+    Product product = new Product(1L, TrashBin.PAPER);
     Bin bin = new Bin(0);
     Bin binException = new Bin(-1);
 
@@ -35,13 +35,13 @@ class ShortResponseServiceTest {
 
     @Test
     void whenProductInDB() {
-        Mockito.when(mockRepository.findByBarcode(1L)).thenReturn(product);
+        Mockito.lenient().when(mockRepository.findByBarcode(1L)).thenReturn(product);
         assertEquals(bin, tested.create("1"));
     }
 
     @Test
     void whenProductNotInDB() {
-        Mockito.lenient().when(mockRepository.findByBarcode(2L)).thenReturn(null);
+        Mockito.when(mockRepository.findByBarcode(2L)).thenReturn(null);
         assertEquals(binException, tested.create("2"));
     }
 }
