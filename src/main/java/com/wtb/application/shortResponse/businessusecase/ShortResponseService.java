@@ -1,10 +1,11 @@
 package com.wtb.application.shortResponse.businessusecase;
 
+import com.wtb.domain.product.Product;
 import com.wtb.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class ShortResponseService {
 
@@ -12,8 +13,8 @@ public class ShortResponseService {
 
     public Bin create(String barcode) {
         try {
-            return new Bin(productRepository.findByBarCode(Long.parseLong(barcode))
-                    .getTrashBin().ordinal());
+            Product product = productRepository.findByBarCode(Long.parseLong(barcode));
+            return new Bin(product.getTrashBin().ordinal());
         } catch (Exception e) {
             return new Bin(-1);
         }
