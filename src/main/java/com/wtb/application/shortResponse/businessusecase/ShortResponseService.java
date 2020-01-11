@@ -11,12 +11,8 @@ public class ShortResponseService {
 
     private final ProductRepository productRepository;
 
-    public Bin create(String barcode) {
-        try {
+    public Bin getBinByBarcode(String barcode) {
             Product product = productRepository.findByBarCode(Long.parseLong(barcode));
             return new Bin(product.getTrashBin().ordinal());
-        } catch (Exception e) {
-            return new Bin(-1);
-        }
     }
 }

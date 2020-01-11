@@ -5,6 +5,7 @@ import com.wtb.application.RGBResponse.businessusecase.RGBResponseService;
 import com.wtb.application.shortResponse.businessusecase.Bin;
 import com.wtb.application.shortResponse.businessusecase.ShortResponseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,23 @@ public class ProductController {
 
     @ResponseBody
     @GetMapping("/bin")
-    public Bin binByBarcode(@RequestParam(value = "barcode") String barcode) {
-        return shortResponseService.create(barcode);
+    public ResponseEntity<Bin> binByBarcode(@RequestParam(value = "barcode") String barcode) {
+        Bin bin;
+        try {
+            bin = shortResponseService.getBinByBarcode(barcode);
+        } catch (NumberFormatException nfe) {
+            return ResponseEntity.badRequest().build();
+        }
+        catch (NullPointerException npe) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(bin);
     }
+
     @ResponseBody
     @GetMapping("/rgb")
     public RGB RGBByBarcode(@RequestParam(value = "barcode") Long barcode) {
-        return rgbResponseService.create(barcode);
+        return rgbResponseService.getRGBByBarcode(barcode);
     }
 
 }

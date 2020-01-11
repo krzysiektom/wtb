@@ -30,18 +30,18 @@ class ShortResponseServiceTest {
 
     @Test
     void whenStringIsNotNumber() {
-        assertEquals(binException, tested.create("a"));
+        assertEquals(binException, tested.getBinByBarcode("a"));
     }
 
     @Test
     void whenProductInDB() {
         Mockito.lenient().when(mockRepository.findByBarCode(1L)).thenReturn(product);
-        assertEquals(bin, tested.create("1"));
+        assertEquals(bin, tested.getBinByBarcode("1"));
     }
 
     @Test
     void whenProductNotInDB() {
         Mockito.when(mockRepository.findByBarCode(2L)).thenReturn(null);
-        assertEquals(binException, tested.create("2"));
+        assertEquals(binException, tested.getBinByBarcode("2"));
     }
 }

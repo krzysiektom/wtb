@@ -40,6 +40,6 @@ class RGBResponseServiceTest {
     void whenProductInDB() {
         Mockito.lenient().when(productRepository.findByBarCode(1L)).thenReturn(product);
         Mockito.lenient().when(binColorRepository.findByTrashBin(product.getTrashBin())).thenReturn(binColor);
-        assertEquals(blue, tested.create(1L));
+        assertEquals(blue, tested.getRGBByBarcode(1L));
     }
 }
