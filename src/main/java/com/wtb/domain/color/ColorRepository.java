@@ -1,5 +1,6 @@
 package com.wtb.domain.color;
 
 public interface ColorRepository {
-    void add(Color color);
+    Color save(Color color);
+    Color getById(Long id);
 }
