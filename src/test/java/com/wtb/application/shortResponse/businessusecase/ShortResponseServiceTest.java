@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
@@ -26,11 +27,10 @@ class ShortResponseServiceTest {
 
     Product product = new Product(1L, TrashBin.PAPER);
     Bin bin = new Bin(0);
-    Bin binException = new Bin(-1);
 
     @Test
     void whenStringIsNotNumber() {
-        assertEquals(binException, tested.getBinByBarcode("a"));
+        assertThrows(NumberFormatException.class, () -> tested.getBinByBarcode("a"));
     }
 
     @Test
@@ -39,9 +39,9 @@ class ShortResponseServiceTest {
         assertEquals(bin, tested.getBinByBarcode("1"));
     }
 
-    @Test
+    @Test()
     void whenProductNotInDB() {
         Mockito.when(mockRepository.findByBarCode(2L)).thenReturn(null);
-        assertEquals(binException, tested.getBinByBarcode("2"));
+        assertThrows(NullPointerException.class, () -> tested.getBinByBarcode("2"));
     }
 }

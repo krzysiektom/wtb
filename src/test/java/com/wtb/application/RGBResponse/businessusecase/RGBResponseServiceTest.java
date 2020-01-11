@@ -16,6 +16,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
@@ -38,8 +39,20 @@ class RGBResponseServiceTest {
 
     @Test
     void whenProductInDB() {
-        Mockito.lenient().when(productRepository.findByBarCode(1L)).thenReturn(product);
-        Mockito.lenient().when(binColorRepository.findByTrashBin(product.getTrashBin())).thenReturn(binColor);
-        assertEquals(blue, tested.getRGBByBarcode(1L));
+        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(product);
+        Mockito.when(binColorRepository.findByTrashBin(product.getTrashBin())).thenReturn(binColor);
+        assertEquals(blue, tested.getRGBByBarcode("1"));
     }
+
+    @Test
+    void whenProductNotInDB() {
+        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(null);
+        assertThrows(NullPointerException.class, () -> tested.getRGBByBarcode("1"));
+    }
+
+    @Test
+    void whenStringIsNotNumber() {
+        assertThrows(NumberFormatException.class, () -> tested.getRGBByBarcode("a"));
+    }
+
 }

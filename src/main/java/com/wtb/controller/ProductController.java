@@ -28,8 +28,7 @@ public class ProductController {
             bin = shortResponseService.getBinByBarcode(barcode);
         } catch (NumberFormatException nfe) {
             return ResponseEntity.badRequest().build();
-        }
-        catch (NullPointerException npe) {
+        } catch (NullPointerException npe) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(bin);
@@ -37,8 +36,16 @@ public class ProductController {
 
     @ResponseBody
     @GetMapping("/rgb")
-    public RGB RGBByBarcode(@RequestParam(value = "barcode") Long barcode) {
-        return rgbResponseService.getRGBByBarcode(barcode);
+    public ResponseEntity<RGB> RGBByBarcode(@RequestParam(value = "barcode") String barcode) {
+        RGB rgb;
+        try {
+            rgb = rgbResponseService.getRGBByBarcode(barcode);
+        } catch (NumberFormatException nfe) {
+            return ResponseEntity.badRequest().build();
+        } catch (NullPointerException npe) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(rgb);
     }
 
 }

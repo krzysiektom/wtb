@@ -15,8 +15,8 @@ public class RGBResponseService {
     private final BinColorRepository binColorRepository;
     private final ProductRepository productRepository;
 
-    public RGB getRGBByBarcode(Long barCode) {
-        Product product = productRepository.findByBarCode(barCode);
+    public RGB getRGBByBarcode(String barCode) {
+        Product product = productRepository.findByBarCode(Long.parseLong(barCode));
         BinColor trashBin = binColorRepository.findByTrashBin(product.getTrashBin());
         Color color = trashBin.getColor();
         return new RGB(color.getR(), color.getG(), color.getB());
