@@ -3,6 +3,7 @@ package com.wtb.controller;
 import com.wtb.domain.color.Color;
 import com.wtb.domain.color.ColorRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +16,19 @@ public class ColorController {
 
     @ResponseBody
     @PostMapping("/add")
-    Color add(@RequestBody Color color){
-        return  colorRepository.save(color);
+    public Color add(@RequestBody Color color) {
+        return colorRepository.save(color);
     }
 
     @ResponseBody
     @GetMapping()
-    public Color getById(@RequestParam ("id") Long id){
-        return colorRepository.getById(id);
+    public ResponseEntity<Color> findById(@RequestParam("id") String id) {
+        Color color;
+        try {
+            color = colorRepository.findBy(Long.parseLong(id));
+        } catch (NumberFormatException nfe) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(color);
     }
 }
