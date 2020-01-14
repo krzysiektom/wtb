@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -21,7 +22,7 @@ public class ColorController {
 
     @ResponseBody
     @PostMapping("/add")
-    public ResponseEntity<Color> add(@RequestBody Color color) throws URISyntaxException {
+    public ResponseEntity<Color> add(@Valid @RequestBody Color color) throws URISyntaxException {
         Color colorSaved = colorRepository.save(color);
         return ResponseEntity.created(new URI("color/" + color.getId())).body(colorSaved);
     }
