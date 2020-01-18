@@ -1,6 +1,8 @@
 package com.wtb.application.colorResponse;
 
 import com.wtb.domain.color.Color;
+import com.wtb.domain.color.ColorBadRequestException;
+import com.wtb.domain.color.ColorNotFoundException;
 import com.wtb.domain.color.ColorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.wtb.application.colorResponse;
+package com.wtb.domain.color;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-class ColorExceptionAdvice {
+public class ColorExceptionAdvice {
 
     @ResponseBody
     @ExceptionHandler(ColorNotFoundException.class)

@@ -1,5 +1,7 @@
 package com.wtb.domain.product;
 
+import java.util.Optional;
+
 public interface ProductRepository {
-    Product findByBarCode(Long barCode);
+    Optional<Product> findByBarCode(Long aLong);
 }

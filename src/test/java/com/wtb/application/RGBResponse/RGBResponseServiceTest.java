@@ -3,9 +3,7 @@ package com.wtb.application.RGBResponse;
 import com.wtb.domain.binColor.BinColor;
 import com.wtb.domain.binColor.BinColorRepository;
 import com.wtb.domain.color.Color;
-import com.wtb.domain.product.Product;
-import com.wtb.domain.product.ProductRepository;
-import com.wtb.domain.product.TrashBin;
+import com.wtb.domain.product.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -14,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -39,20 +39,20 @@ class RGBResponseServiceTest {
 
     @Test
     void whenProductInDB() {
-        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(product);
+        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(Optional.of(product));
         Mockito.when(binColorRepository.findByTrashBin(product.getTrashBin())).thenReturn(binColor);
         assertEquals(blue, tested.getRGBByBarcode("1"));
     }
 
     @Test
     void whenProductNotInDB() {
-        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(null);
-        assertThrows(NullPointerException.class, () -> tested.getRGBByBarcode("1"));
+        Mockito.when(productRepository.findByBarCode(1L)).thenReturn(Optional.ofNullable(null));
+        assertThrows(ProductNotFoundException.class, () -> tested.getRGBByBarcode("1"));
     }
 
     @Test
     void whenStringIsNotNumber() {
-        assertThrows(NumberFormatException.class, () -> tested.getRGBByBarcode("a"));
+        assertThrows(ProductBadRequestException.class, () -> tested.getRGBByBarcode("a"));
     }
 
 }

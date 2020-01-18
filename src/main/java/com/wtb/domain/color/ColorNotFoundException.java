@@ -1,6 +1,6 @@
-package com.wtb.application.colorResponse;
+package com.wtb.domain.color;
 
-class ColorNotFoundException extends RuntimeException {
+public class ColorNotFoundException extends RuntimeException {
     public ColorNotFoundException(Long id) {
         super("Could not find color with id = " + id);
     }
