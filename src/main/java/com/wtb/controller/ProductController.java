@@ -8,8 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -21,8 +21,8 @@ public class ProductController {
     private final RGBResponseService rgbResponseService;
 
     @ResponseBody
-    @GetMapping("/bin")
-    public ResponseEntity<Bin> binByBarcode(@RequestParam(value = "barcode") String barcode) {
+    @GetMapping("/bin/{barcode}")
+    public ResponseEntity<Bin> binByBarcode(@PathVariable("barcode") String barcode) {
         Bin bin;
         try {
             bin = shortResponseService.getBinByBarcode(barcode);
@@ -35,8 +35,8 @@ public class ProductController {
     }
 
     @ResponseBody
-    @GetMapping("/rgb")
-    public ResponseEntity<RGB> RGBByBarcode(@RequestParam(value = "barcode") String barcode) {
+    @GetMapping("/rgb/{barcode}")
+    public ResponseEntity<RGB> RGBByBarcode(@PathVariable("barcode") String barcode) {
         RGB rgb;
         try {
             rgb = rgbResponseService.getRGBByBarcode(barcode);
