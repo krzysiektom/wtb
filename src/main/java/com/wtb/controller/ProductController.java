@@ -1,9 +1,9 @@
 package com.wtb.controller;
 
-import com.wtb.application.RGBResponse.businessusecase.RGB;
-import com.wtb.application.RGBResponse.businessusecase.RGBResponseService;
-import com.wtb.application.shortResponse.businessusecase.Bin;
-import com.wtb.application.shortResponse.businessusecase.ShortResponseService;
+import com.wtb.application.RGBResponse.RGB;
+import com.wtb.application.RGBResponse.RGBResponseService;
+import com.wtb.application.shortResponse.Bin;
+import com.wtb.application.shortResponse.ShortResponseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

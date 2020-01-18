@@ -1,4 +1,4 @@
-package com.wtb.application.shortResponse.businessusecase;
+package com.wtb.application.shortResponse;
 
 import com.wtb.domain.product.Product;
 import com.wtb.domain.product.ProductRepository;

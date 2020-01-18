@@ -1,4 +1,4 @@
-package com.wtb.application.RGBResponse.businessusecase;
+package com.wtb.application.RGBResponse;
 
 import com.wtb.domain.binColor.BinColor;
 import com.wtb.domain.binColor.BinColorRepository;

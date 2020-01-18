@@ -1,4 +1,4 @@
-package com.wtb.application.shortResponse.businessusecase;
+package com.wtb.application.shortResponse;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -1,5 +1,7 @@
-package com.wtb.domain.color;
+package com.wtb.application.colorResponse;
 
+import com.wtb.domain.color.Color;
+import com.wtb.domain.color.ColorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

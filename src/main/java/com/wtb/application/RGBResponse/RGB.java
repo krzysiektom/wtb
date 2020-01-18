@@ -1,4 +1,4 @@
-package com.wtb.application.RGBResponse.businessusecase;
+package com.wtb.application.RGBResponse;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

@@ -13,14 +13,14 @@ import javax.validation.constraints.Min;
 public class Color extends BaseEntity {
     @NotBlank(message = "Name is mandatory")
     private String colorName;
-    @Min(0)
-    @Max(255)
+    @Min(value = 0, message = "Value must be between 0 and 255")
+    @Max(value = 255, message = "Value must be between 0 and 255")
     private int r;
-    @Min(0)
-    @Max(255)
+    @Min(value = 0, message = "Value must be between 0 and 255")
+    @Max(value = 255, message = "Value must be between 0 and 255")
     private int g;
-    @Min(0)
-    @Max(255)
+    @Min(value = 0, message = "Value must be between 0 and 255")
+    @Max(value = 255, message = "Value must be between 0 and 255")
     private int b;
 
     public Color(String colorName, int r, int g, int b) {

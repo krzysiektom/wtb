@@ -1,4 +1,4 @@
-package com.wtb.domain.color;
+package com.wtb.application.colorResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
