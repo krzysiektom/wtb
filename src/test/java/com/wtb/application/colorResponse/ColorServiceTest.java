@@ -15,7 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
@@ -27,22 +28,22 @@ class ColorServiceTest {
     @Mock
     private ColorRepository mockRepository;
 
-    Color color = new Color("BLUE",0,0,255);
+    Color color = new Color("BLUE", 0, 0, 255);
 
     @Test
     void StringIsNotNumber() {
-        assertThrows(ColorBadRequestException.class, () ->tested.findById("a"));
+        assertThrows(ColorBadRequestException.class, () -> tested.findById("a"));
     }
 
     @Test
-    void whenColorNotInDB(){
+    void whenColorNotInDB() {
         Mockito.when(mockRepository.findById(2L)).thenReturn(Optional.ofNullable(null));
-        assertThrows(ColorNotFoundException.class,() -> tested.findById("2"));
+        assertThrows(ColorNotFoundException.class, () -> tested.findById("2"));
     }
 
     @Test
-    void whenColorInDB(){
+    void whenColorInDB() {
         Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(color));
-        assertEquals(color,tested.findById("1"));
+        assertEquals(color, tested.findById("1"));
     }
 }
