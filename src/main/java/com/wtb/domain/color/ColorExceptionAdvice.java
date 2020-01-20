@@ -29,6 +29,13 @@ public class ColorExceptionAdvice {
     }
 
     @ResponseBody
+    @ExceptionHandler(ColorExistException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String colorExistException(ColorExistException ex) {
+        return ex.getMessage();
+    }
+
+    @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handlerValidationExceptions(
             MethodArgumentNotValidException ex) {

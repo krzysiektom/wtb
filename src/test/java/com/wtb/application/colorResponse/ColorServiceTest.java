@@ -1,9 +1,6 @@
 package com.wtb.application.colorResponse;
 
-import com.wtb.domain.color.Color;
-import com.wtb.domain.color.ColorBadRequestException;
-import com.wtb.domain.color.ColorNotFoundException;
-import com.wtb.domain.color.ColorRepository;
+import com.wtb.domain.color.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -29,21 +26,41 @@ class ColorServiceTest {
     private ColorRepository mockRepository;
 
     Color color = new Color("BLUE", 0, 0, 255);
+    Color colorBlue2 = new Color("BLUE", 0, 12, 255);
 
     @Test
-    void StringIsNotNumber() {
+    void findByIdStringIsNotNumber() {
         assertThrows(ColorBadRequestException.class, () -> tested.findById("a"));
     }
 
     @Test
-    void whenColorNotInDB() {
-        Mockito.when(mockRepository.findById(2L)).thenReturn(Optional.ofNullable(null));
+    void findByIdWhenColorNotInDB() {
+        Mockito.when(mockRepository.findById(2L)).thenReturn(Optional.empty());
         assertThrows(ColorNotFoundException.class, () -> tested.findById("2"));
     }
 
     @Test
-    void whenColorInDB() {
+    void findByIdWhenColorInDB() {
         Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(color));
         assertEquals(color, tested.findById("1"));
+    }
+
+    @Test
+    void saveWhenColorNotInDB() {
+        Mockito.when(mockRepository.findByColorName("BLUE")).thenReturn(Optional.empty());
+        Mockito.when(mockRepository.save(color)).thenReturn(color);
+        assertEquals(color, tested.save(color));
+    }
+
+    @Test
+    void saveWhenColorInDBTheSame() {
+        Mockito.when(mockRepository.findByColorName("BLUE")).thenReturn(Optional.of(color));
+        assertEquals(color, tested.save(color));
+    }
+
+    @Test
+    void saveWhenColorInDBButNotTheSame() {
+        Mockito.when(mockRepository.findByColorName("BLUE")).thenReturn(Optional.of(colorBlue2));
+        assertThrows(ColorExistException.class, () -> tested.save(color));
     }
 }

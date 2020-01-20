@@ -1,9 +1,6 @@
 package com.wtb.application.colorResponse;
 
-import com.wtb.domain.color.Color;
-import com.wtb.domain.color.ColorBadRequestException;
-import com.wtb.domain.color.ColorNotFoundException;
-import com.wtb.domain.color.ColorRepository;
+import com.wtb.domain.color.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +18,15 @@ public class ColorService {
         }
         return colorRepository.findById(idParse)
                 .orElseThrow(() -> new ColorNotFoundException(idParse));
+    }
+
+    public Color save(Color color) {
+        Color colorInDB = colorRepository.findByColorName(color.getColorName()).orElse(null);
+        if (colorInDB != null && colorInDB.equals(color)) {
+            return colorInDB;
+        } else if (colorInDB == null) {
+            return colorRepository.save(color);
+        }
+        throw new ColorExistException(colorInDB.getId());
     }
 }

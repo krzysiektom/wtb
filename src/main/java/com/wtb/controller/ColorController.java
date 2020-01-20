@@ -2,7 +2,6 @@ package com.wtb.controller;
 
 import com.wtb.application.colorResponse.ColorService;
 import com.wtb.domain.color.Color;
-import com.wtb.domain.color.ColorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,12 @@ import java.net.URISyntaxException;
 @RequiredArgsConstructor
 public class ColorController {
 
-    private final ColorRepository colorRepository;
     private final ColorService colorService;
 
     @ResponseBody
     @PostMapping("/add")
     public ResponseEntity<Color> add(@Valid @RequestBody Color color) throws URISyntaxException {
-        Color colorSaved = colorRepository.save(color);
+        Color colorSaved = colorService.save(color);
         return ResponseEntity.created(new URI("color/" + colorSaved.getId())).body(colorSaved);
     }
 

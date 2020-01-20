@@ -10,4 +10,6 @@ public interface H2ColorRepository extends JpaRepository<Color, Long>, ColorRepo
     Color save(Color color);
 
     Optional<Color> findById(Long id);
+
+    Optional<Color> findByColorName(String colorName);
 }
