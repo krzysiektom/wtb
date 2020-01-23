@@ -22,4 +22,11 @@ public class ProductExceptionAdvice {
     String productNotFoundHandler(ProductNotFoundException ex) {
         return ex.getMessage();
     }
+
+    @ResponseBody
+    @ExceptionHandler(ProductExistException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    String productExistHandler(ProductExistException ex) {
+        return ex.getMessage();
+    }
 }
