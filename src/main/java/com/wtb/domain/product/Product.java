@@ -2,14 +2,14 @@ package com.wtb.domain.product;
 
 import com.wtb.domain.buildingblocks.BaseEntity;
 import lombok.Getter;
-import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Getter
 public class Product extends BaseEntity {
-    @NotBlank(message = "BarCode is mandatory")
+    @NotNull(message = "BarCode is mandatory")
     private Long barCode;
     private TrashBin trashBin;
 

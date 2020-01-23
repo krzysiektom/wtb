@@ -10,4 +10,6 @@ public interface H2ProductRepository extends JpaRepository<Product, Long>, Produ
     Optional<Product> findByBarCode(Long aLong);
 
     Product save(Product product);
+
+    Optional<Product> findById(Long id);
 }

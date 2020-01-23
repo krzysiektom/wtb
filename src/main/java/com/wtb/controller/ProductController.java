@@ -25,6 +25,19 @@ public class ProductController {
     private final ProductService productService;
 
     @ResponseBody
+    @GetMapping("/{id}")
+    public ResponseEntity<Product> findById(@PathVariable("id") String id) {
+        return ResponseEntity.ok(productService.findById(id));
+    }
+
+    @ResponseBody
+    @PostMapping("/add")
+    public ResponseEntity<Product> add(@Valid @RequestBody Product product) throws URISyntaxException {
+        Product productSaved = productService.save(product);
+        return ResponseEntity.created(new URI("product/" + productSaved.getId())).body(productSaved);
+    }
+
+    @ResponseBody
     @GetMapping("/bin/{barCode}")
     public ResponseEntity<Bin> binByBarcode(@PathVariable("barCode") String barCode) {
         return ResponseEntity.ok(shortResponseService.getBinByBarcode(barCode));
@@ -34,13 +47,6 @@ public class ProductController {
     @GetMapping("/rgb/{barCode}")
     public ResponseEntity<RGB> RGBByBarcode(@PathVariable("barCode") String barCode) {
         return ResponseEntity.ok(rgbResponseService.getRGBByBarcode(barCode));
-    }
-
-    @ResponseBody
-    @PostMapping("/add")
-    public ResponseEntity<Product> add(@Valid @RequestBody Product product) throws URISyntaxException {
-        Product productSaved = productService.save(product);
-        return ResponseEntity.created(new URI("product/" + productSaved.getId())).body(productSaved);
     }
 
 }

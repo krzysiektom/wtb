@@ -1,8 +1,6 @@
 package com.wtb.application;
 
-import com.wtb.domain.product.Product;
-import com.wtb.domain.product.ProductExistException;
-import com.wtb.domain.product.ProductRepository;
+import com.wtb.domain.product.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +19,15 @@ public class ProductService {
         } else {
             throw new ProductExistException(productInDB.getId());
         }
+    }
+
+    public Product findById(String id) {
+        Long idParse;
+        try {
+            idParse = Long.parseLong(id);
+        } catch (NumberFormatException nfe) {
+            throw new ProductBadRequestException(id);
+        }
+        return productRepository.findById(idParse).orElseThrow(() -> new ProductNotFoundException(idParse));
     }
 }
