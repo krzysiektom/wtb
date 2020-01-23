@@ -22,10 +22,10 @@ public class ColorService {
 
     public Color save(Color color) {
         Color colorInDB = colorRepository.findByColorName(color.getColorName()).orElse(null);
-        if (colorInDB != null && colorInDB.equals(color)) {
-            return colorInDB;
-        } else if (colorInDB == null) {
+        if (colorInDB == null) {
             return colorRepository.save(color);
+        } else if (colorInDB.equals(color)) {
+            return colorInDB;
         }
         throw new ColorExistException(colorInDB.getId());
     }
