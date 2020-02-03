@@ -1,5 +1,7 @@
 package com.wtb.application.RGBResponse;
 
+import com.wtb.application.barCodeResponse.BarCodeBadRequestException;
+import com.wtb.application.barCodeResponse.BarCodeNotFoundException;
 import com.wtb.domain.binColor.BinColor;
 import com.wtb.domain.binColor.BinColorRepository;
 import com.wtb.domain.color.Color;
@@ -47,12 +49,12 @@ class RGBResponseServiceTest {
     @Test
     void whenProductNotInDB() {
         Mockito.when(productRepository.findByBarCode(1L)).thenReturn(Optional.ofNullable(null));
-        assertThrows(ProductNotFoundException.class, () -> tested.getRGBByBarcode("1"));
+        assertThrows(BarCodeNotFoundException.class, () -> tested.getRGBByBarcode("1"));
     }
 
     @Test
     void whenStringIsNotNumber() {
-        assertThrows(ProductBadRequestException.class, () -> tested.getRGBByBarcode("a"));
+        assertThrows(BarCodeBadRequestException.class, () -> tested.getRGBByBarcode("a"));
     }
 
 }
