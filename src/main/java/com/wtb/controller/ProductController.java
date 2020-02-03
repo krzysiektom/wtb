@@ -3,8 +3,9 @@ package com.wtb.controller;
 import com.wtb.application.ProductService;
 import com.wtb.application.RGBResponse.RGB;
 import com.wtb.application.RGBResponse.RGBResponseService;
-import com.wtb.application.shortResponse.Bin;
-import com.wtb.application.shortResponse.ShortResponseService;
+import com.wtb.application.barCodeResponse.BarCodeResponseService;
+import com.wtb.application.binResponse.Bin;
+import com.wtb.application.binResponse.BinResponseService;
 import com.wtb.domain.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,15 @@ import java.net.URISyntaxException;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ShortResponseService shortResponseService;
+    private final BinResponseService binResponseService;
     private final RGBResponseService rgbResponseService;
+    private final BarCodeResponseService barCodeResponseService;
     private final ProductService productService;
 
     @ResponseBody
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(productService.findById(id));
+    @GetMapping("/barcode/{barCode}")
+    public ResponseEntity<Product> findByBarCode(@PathVariable("barCode") String barCode) {
+        return ResponseEntity.ok(barCodeResponseService.findByBarCode(barCode));
     }
 
     @ResponseBody
@@ -40,7 +42,7 @@ public class ProductController {
     @ResponseBody
     @GetMapping("/bin/{barCode}")
     public ResponseEntity<Bin> binByBarcode(@PathVariable("barCode") String barCode) {
-        return ResponseEntity.ok(shortResponseService.getBinByBarcode(barCode));
+        return ResponseEntity.ok(binResponseService.getBinByBarcode(barCode));
     }
 
     @ResponseBody

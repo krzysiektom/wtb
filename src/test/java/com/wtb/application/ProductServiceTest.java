@@ -1,6 +1,9 @@
 package com.wtb.application;
 
-import com.wtb.domain.product.*;
+import com.wtb.domain.product.Product;
+import com.wtb.domain.product.ProductExistException;
+import com.wtb.domain.product.ProductRepository;
+import com.wtb.domain.product.TrashBin;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
@@ -46,22 +49,4 @@ class ProductServiceTest {
         assertThrows(ProductExistException.class, () -> tested.save(product));
 
     }
-
-    @Test
-    void findByIdStringIsNotNumber() {
-        assertThrows(ProductBadRequestException.class, () -> tested.findById("a"));
-    }
-
-    @Test
-    void findByIdWhenColorNotInDB() {
-        Mockito.when(mockRepository.findById(2L)).thenReturn(Optional.empty());
-        assertThrows(ProductNotFoundException.class, () -> tested.findById("2"));
-    }
-
-    @Test
-    void findByIdWhenColorInDB() {
-        Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(product));
-        assertEquals(product, tested.findById("1"));
-    }
-
 }

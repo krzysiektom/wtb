@@ -1,4 +1,4 @@
-package com.wtb.application.shortResponse;
+package com.wtb.application.binResponse;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

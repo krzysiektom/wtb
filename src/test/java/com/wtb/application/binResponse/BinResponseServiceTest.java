@@ -1,5 +1,7 @@
-package com.wtb.application.shortResponse;
+package com.wtb.application.binResponse;
 
+import com.wtb.application.barCodeResponse.BarCodeBadRequestException;
+import com.wtb.application.barCodeResponse.BarCodeNotFoundException;
 import com.wtb.domain.product.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
-class ShortResponseServiceTest {
+class BinResponseServiceTest {
 
     @InjectMocks
-    private ShortResponseService tested;
+    private BinResponseService tested;
 
     @Mock
     private ProductRepository mockRepository;
@@ -30,7 +32,7 @@ class ShortResponseServiceTest {
 
     @Test
     void whenStringIsNotNumber() {
-        assertThrows(ProductBadRequestException.class, () -> tested.getBinByBarcode("a"));
+        assertThrows(BarCodeBadRequestException.class, () -> tested.getBinByBarcode("a"));
     }
 
     @Test
@@ -42,6 +44,6 @@ class ShortResponseServiceTest {
     @Test()
     void whenProductNotInDB() {
         Mockito.when(mockRepository.findByBarCode(2L)).thenReturn(Optional.ofNullable(null));
-        assertThrows(ProductNotFoundException.class, () -> tested.getBinByBarcode("2"));
+        assertThrows(BarCodeNotFoundException.class, () -> tested.getBinByBarcode("2"));
     }
 }

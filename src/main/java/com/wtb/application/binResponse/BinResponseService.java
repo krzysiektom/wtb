@@ -1,15 +1,15 @@
-package com.wtb.application.shortResponse;
+package com.wtb.application.binResponse;
 
+import com.wtb.application.barCodeResponse.BarCodeBadRequestException;
+import com.wtb.application.barCodeResponse.BarCodeNotFoundException;
 import com.wtb.domain.product.Product;
-import com.wtb.domain.product.ProductBadRequestException;
-import com.wtb.domain.product.ProductNotFoundException;
 import com.wtb.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ShortResponseService {
+public class BinResponseService {
 
     private final ProductRepository productRepository;
 
@@ -18,10 +18,10 @@ public class ShortResponseService {
         try {
             barCodeParse = Long.parseLong(barCode);
         } catch (NumberFormatException nfe) {
-            throw new ProductBadRequestException(barCode);
+            throw new BarCodeBadRequestException(barCode);
         }
         Product product = productRepository.findByBarCode(barCodeParse)
-                .orElseThrow(() -> new ProductNotFoundException(barCodeParse));
+                .orElseThrow(() -> new BarCodeNotFoundException(barCodeParse));
         return new Bin(product.getTrashBin().ordinal());
     }
 }
