@@ -1,35 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
 <head>
-    <title>WTB</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   <th:block th:replace="layout/partials/head">Adding head</th:block>
 </head>
 <body>
-<nav class="navbar navbar-dark" style="background-color: #265652;">
-    <!-- Brand -->
-    <a class="navbar-brand" th:href="@{/}"><span class="badge badge-info mr-2">S</span>Substi</a>
-
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <!-- logowanie / rejestracja -->
-            <form class="form-inline" th:action="@{/login/}" method="post">
-                <input class="form-control mr-sm-2 my-1" type="search" th:name="login"  placeholder="Email" aria-label="Email">
-                <input class="form-control mr-sm-2 my-1" type="password" th:name="password" placeholder="Hasło" aria-label="Hasło">
-                <button class="btn btn-outline-success" type="submit">Zaloguj</button>
-                <a th:href="@{/register/}" class="ml-2 badge badge-info">Rejestracja</a>
-            </form>
-        </li>
-    </ul>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="" th:text="${name}"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
-<h1>Witaj wfsfs  dssddnlnffn ale dobrzto jest coś e dfsdf fs...</h1>
+<h1>Witaj wfsfs  dssddnt coś e dfsdf fs...</h1>
 <img th:src="@{/images/wtb.jpeg}">
 
-
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
+            <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
