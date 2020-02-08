@@ -13,88 +13,72 @@
             <p class="lead">Jeżeli masz pytania? Proszę wypełnij formularz lub zadzwoń.</p>
         </div>
     </div>
-</div>
-<div class="container">
-    <!--Section: Contact v.2-->
-    <section class="mb-4">
 
-        <div class="row">
+    <div class="row">
+        <div class="col-md-9">
+            <form action="/" method="GET">
 
-            <!--Grid column-->
-            <div class="col-md-9 mb-md-0 mb-5">
-                <form action="/" method="GET">
-
-                    <div class="row form-group">
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="md-form mb-0">
-                                <input type="text" id="name" name="name" class="form-control"
-                                       placeholder="Imię i nazwisko">
-                            </div>
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <div class="md-form mt-3">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
                         </div>
                     </div>
-
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <div class="md-form mb-0">
-                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Temat">
-                            </div>
+                    <div class="col-md-6">
+                        <div class="md-form mt-3">
+                            <input type="text" id="name" name="name" class="form-control"
+                                   placeholder="Imię i nazwisko">
                         </div>
                     </div>
+                </div>
 
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <div class="md-form">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="md-form mb-0">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Temat">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <div class="md-form">
                                 <textarea type="text" id="message" name="message" rows="4"
                                           class="form-control md-textarea" placeholder="Treść wiadomości"></textarea>
-                            </div>
                         </div>
                     </div>
-                    <div class="row form-group form-check">
-                        <div class="col-md-12">
-                            <div class="md-form">
-                                <input class="form-check-input" type="checkbox" id="resend" name="resend">
-                                <label for="resend">Chcę otrzymać kopię tej wiadomości na swoją skrzynkę
-                                    pocztową.</label>
-                            </div>
+                </div>
+                <div class="row form-group form-check">
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input class="form-check-input" type="checkbox" id="resend" name="resend">
+                            <label for="resend">Chcę otrzymać kopię tej wiadomości na swoją skrzynkę
+                                pocztową.</label>
                         </div>
                     </div>
-                    <div class="text-center text-md-left">
-                        <button class="btn btn-dark" type="submit">Wyślij</button>
-                    </div>
-                </form>
-
-
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-3 text-center">
-                <ul class="list-unstyled mb-0">
-                    <li><i class="fas fa-map-marker-alt fa-2x"></i>
-                        <p>Warszawa, Polska</p>
-                    </li>
-
-                    <li><i class="fas fa-phone mt-4 fa-2x"></i>
-                        <p>+ 48 123 123 13</p>
-                    </li>
-
-                    <li><i class="fas fa-envelope mt-4 fa-2x"></i>
-                        <p>contact@wtb.com</p>
-                    </li>
-                </ul>
-            </div>
-            <!--Grid column-->
-
+                </div>
+                <div class="text-center text-md-left">
+                    <button class="btn btn-dark" type="submit">Wyślij wiadomość</button>
+                </div>
+            </form>
         </div>
 
-    </section>
-    <!--Section: Contact v.2-->
+        <div class="col-md-3 text-center">
+            <ul class="list-unstyled mb-0">
+                <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                    <p>Warszawa, Polska</p>
+                </li>
+
+                <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                    <p>+ 48 123 123 123</p>
+                </li>
+
+                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                    <p>contact@wtb.com</p>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 </body>
