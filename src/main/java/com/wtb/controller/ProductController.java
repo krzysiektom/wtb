@@ -32,6 +32,12 @@ public class ProductController {
         return ResponseEntity.ok(barCodeResponseService.findByBarCode(barCode));
     }
 
+    @ResponseBody   //zamieniń na stronę
+    @GetMapping("/barcode")
+    public ResponseEntity<Product> findByBarCodeR(@RequestParam("barCode") String barCode) {
+        return ResponseEntity.ok(barCodeResponseService.findByBarCode(barCode));
+    }
+
     @ResponseBody
     @PostMapping("/add")
     public ResponseEntity<Product> add(@Valid @RequestBody Product product) throws URISyntaxException {

@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pl">
 <head>
-   <th:block th:replace="layout/partials/head">Adding head</th:block>
+    <th:block th:replace="layout/partials/head">Adding head</th:block>
 </head>
 <body>
 <th:block th:replace="layout/partials/navbar">Adding navbar</th:block>
-<h1>Witaj wfsfs  dssddnt coś e dfsdf fs...</h1>
-<img th:src="@{/images/wtb.jpeg}">
 
-<!-- Page Content -->
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-            <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+            <h1 class="mt-5">Który kosz na śmieci</h1>
+            <p class="lead">Aplikacja na podstawie kodu kreskowego określa do jakiego kosza należy wrzucić opowanie po
+                produkcie</p>
+        </div>
+        <div class="col-sm-4 mx-auto">
+            <form action="/product/barcode" method="get">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Wprowadź kod kreskowy" name="barCode">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark" type="submit">Szukaj</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
