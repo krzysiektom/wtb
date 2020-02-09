@@ -31,11 +31,6 @@ public class ApiProductController {
         return ResponseEntity.ok(barCodeResponseService.findByBarCode(barCode));
     }
 
-    @GetMapping("/barcode")
-    public ResponseEntity<Product> findByBarCodeR(@RequestParam("barCode") String barCode) {
-        return ResponseEntity.ok(barCodeResponseService.findByBarCode(barCode));
-    }
-
     @PostMapping("/add")
     public ResponseEntity<Product> add(@Valid @RequestBody Product product) throws URISyntaxException {
         Product productSaved = productService.save(product);
