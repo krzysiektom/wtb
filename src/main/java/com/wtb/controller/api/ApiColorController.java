@@ -1,4 +1,4 @@
-package com.wtb.controller;
+package com.wtb.controller.api;
 
 import com.wtb.application.colorResponse.ColorService;
 import com.wtb.domain.color.Color;
@@ -11,21 +11,19 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-@Controller
-@RequestMapping("color")
+@RestController
+@RequestMapping("api/color")
 @RequiredArgsConstructor
-public class ColorController {
+public class ApiColorController {
 
     private final ColorService colorService;
 
-    @ResponseBody
     @PostMapping("/add")
     public ResponseEntity<Color> add(@Valid @RequestBody Color color) throws URISyntaxException {
         Color colorSaved = colorService.save(color);
         return ResponseEntity.created(new URI("color/" + colorSaved.getId())).body(colorSaved);
     }
 
-    @ResponseBody
     @GetMapping("/{id}")
     public ResponseEntity<Color> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(colorService.findById(id));
