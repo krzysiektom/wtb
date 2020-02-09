@@ -18,7 +18,7 @@ public class ProductController {
     @GetMapping("/barcode")
     public String findByBarCode(@RequestParam("barCode") String barCode, Model model) {
         model.addAttribute(barCodeResponseService.findByBarCode(barCode));
-        return "product";
+        return "product"; //TODO page product
     }
 
 }
