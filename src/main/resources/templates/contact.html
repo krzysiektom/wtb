@@ -16,18 +16,24 @@
 
     <div class="row">
         <div class="col-md-9">
-            <form action="/" method="GET">
+            <form th:action="@{/contact}" th:object="${mail}" method="post">
 
                 <div class="row form-group">
                     <div class="col-md-6">
                         <div class="md-form mt-3">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                            <input type="text" th:field="*{email}" class="form-control" placeholder="Email">
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">
+                                Email error.
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="md-form mt-3">
-                            <input type="text" id="name" name="name" class="form-control"
+                            <input type="text" th:field="*{name}" class="form-control"
                                    placeholder="Imię i nazwisko">
+                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">
+                                Name error.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +41,10 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Temat">
+                            <input type="text" th:field="*{subject}" class="form-control" placeholder="Temat">
+                            <div th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}" class="text-danger">
+                                Subject error.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,15 +52,18 @@
                 <div class="row form-group">
                     <div class="col-md-12">
                         <div class="md-form">
-                                <textarea type="text" id="message" name="message" rows="4"
+                                <textarea type="text" th:field="*{message}" rows="4"
                                           class="form-control md-textarea" placeholder="Treść wiadomości"></textarea>
+                            <div th:if="${#fields.hasErrors('message')}" th:errors="*{message}" class="text-danger">
+                                Message error.
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row form-group form-check">
                     <div class="col-md-12">
                         <div class="md-form">
-                            <input class="form-check-input" type="checkbox" id="resend" name="resend">
+                            <input class="form-check-input" type="checkbox" th:field="*{resend}" id="resend">
                             <label for="resend">Chcę otrzymać kopię tej wiadomości na swoją skrzynkę
                                 pocztową.</label>
                         </div>
