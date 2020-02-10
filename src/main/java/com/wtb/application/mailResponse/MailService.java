@@ -12,7 +12,7 @@ public class MailService {
 
     public void sendMail(Mail mail) {
         //TODO zapis do DB
-        if (mail.getResend()) {
+        if (mail.getResend()) { //TODO replace to event
             emailComponent.sendEmail(mail);
         }
     }
