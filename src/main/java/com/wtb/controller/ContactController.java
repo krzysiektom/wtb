@@ -1,6 +1,8 @@
 package com.wtb.controller;
 
 import com.wtb.application.mailResponse.Mail;
+import com.wtb.application.mailResponse.MailService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,10 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/contact")
+@RequiredArgsConstructor
 public class ContactController {
+
+    private final MailService mailService;
 
     @GetMapping("")
     public String contactPage(@ModelAttribute Mail mail) {
@@ -24,8 +29,7 @@ public class ContactController {
         if (result.hasErrors()) {
             return "contact";
         }
-        System.out.println(mail);
-        //TODO sending email
+        mailService.sendMail(mail);
         return "results";
     }
 }
