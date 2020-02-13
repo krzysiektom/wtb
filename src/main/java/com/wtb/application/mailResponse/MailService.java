@@ -1,6 +1,6 @@
 package com.wtb.application.mailResponse;
 
-import com.wtb.domain.buildingblocks.EmailComponent;
+import com.wtb.domain.email.EmailSpringEventPublisher;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MailService {
 
-    private final EmailComponent emailComponent;
+    private final EmailSpringEventPublisher publisher;
 
     public void sendMail(Mail mail) {
         //TODO zapis do DB
-        if (mail.getResend()) { //TODO replace to event
-            emailComponent.sendEmail(mail);
+        if (mail.getResend()) {
+            publisher.publishEvent(mail);
         }
     }
 

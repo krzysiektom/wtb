@@ -1,4 +1,4 @@
-package com.wtb.domain.buildingblocks;
+package com.wtb.domain.email;
 
 import com.wtb.application.mailResponse.Mail;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class EmailComponent {
+public class EmailSender {
 
     @Value("${spring.mail.username}")
     private String email;
