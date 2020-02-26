@@ -1,6 +1,6 @@
 package com.wtb.domain.email;
 
-import com.wtb.application.mailResponse.Mail;
+import com.wtb.application.mail.ContactDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 public class EmailSpringEventPublisher {
     private final ApplicationEventPublisher publisher;
 
-    public void publishEvent(final Mail mail) {
-        EmailSpringEvent emailSpringEvent = new EmailSpringEvent(this,mail);
-        publisher.publishEvent(emailSpringEvent);
+    public void publishEvent(final ContactDto contactDto) {
+        EmailEvent emailEvent = new EmailEvent(contactDto);
+        publisher.publishEvent(emailEvent);
     }
 }

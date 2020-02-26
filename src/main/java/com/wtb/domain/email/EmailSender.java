@@ -1,6 +1,6 @@
 package com.wtb.domain.email;
 
-import com.wtb.application.mailResponse.Mail;
+import com.wtb.application.mail.ContactDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -16,12 +16,12 @@ public class EmailSender {
 
     private final JavaMailSender javaMailSender;
 
-    public void sendEmail(Mail mail) {
+    public void sendEmail(ContactDto contactDto) {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(email);
-        msg.setCc(mail.getEmail());
-        msg.setSubject(mail.getSubject());
-        msg.setText(mail.getMessage());
+        msg.setCc(contactDto.getEmail());
+        msg.setSubject(contactDto.getSubject());
+        msg.setText(contactDto.getMessage());
 
         javaMailSender.send(msg);
     }

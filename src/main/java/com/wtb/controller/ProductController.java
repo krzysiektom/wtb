@@ -1,6 +1,6 @@
 package com.wtb.controller;
 
-import com.wtb.application.barCodeResponse.BarCodeResponseService;
+import com.wtb.application.product.ProductReadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final BarCodeResponseService barCodeResponseService;
+    private final ProductReadService productReadService;
 
     @GetMapping("/barcode")
-    public String findByBarCode(@RequestParam("barCode") String barCode, Model model) {
-        model.addAttribute(barCodeResponseService.findByBarCode(barCode));
+    public String findByBarCode(@RequestParam("barCode") Long barCode, Model model) {
+        model.addAttribute(productReadService.findByBarCode(barCode));
         return "product"; //TODO page product
     }
 

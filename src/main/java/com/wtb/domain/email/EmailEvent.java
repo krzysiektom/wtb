@@ -1,0 +1,12 @@
+package com.wtb.domain.email;
+
+import com.wtb.application.mail.ContactDto;
+import lombok.Getter;
+import org.springframework.context.ApplicationEvent;
+
+@Getter
+public class EmailEvent extends ApplicationEvent {
+    public EmailEvent(ContactDto contactDto) {
+        super(contactDto);
+    }
+}

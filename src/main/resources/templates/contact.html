@@ -16,7 +16,8 @@
 
     <div class="row">
         <div class="col-md-9">
-            <form th:action="@{/contact}" th:object="${mail}" method="post">
+            <!--/*@thymesVar id="contactDto" type="com.wtb.application.mail.ContactDto"*/-->
+            <form th:action="@{/contact}" th:object="${contactDto}" method="post">
 
                 <div class="row form-group">
                     <div class="col-md-6">
@@ -63,7 +64,7 @@
                 <div class="row form-group form-check">
                     <div class="col-md-12">
                         <div class="md-form">
-                            <input class="form-check-input" type="checkbox" th:field="*{resend}" id="resend">
+                            <input class="form-check-input" type="checkbox" th:field="*{sendEmail}" id="resend">
                             <label for="resend">Chcę otrzymać kopię tej wiadomości na swoją skrzynkę
                                 pocztową.</label>
                         </div>
