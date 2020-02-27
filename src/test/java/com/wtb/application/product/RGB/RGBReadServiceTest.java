@@ -1,7 +1,7 @@
-package com.wtb.application.RGB;
+package com.wtb.application.product.RGB;
 
-import com.wtb.application.product.barCode.BarCodeBadRequestException;
-import com.wtb.application.product.barCode.BarCodeNotFoundException;
+import com.wtb.domain.product.barCode.BarCodeBadRequestException;
+import com.wtb.domain.product.barCode.BarCodeNotFoundException;
 import com.wtb.domain.binColor.BinColor;
 import com.wtb.domain.binColor.BinColorRepository;
 import com.wtb.domain.color.Color;

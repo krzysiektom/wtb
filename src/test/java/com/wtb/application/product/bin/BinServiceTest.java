@@ -1,7 +1,7 @@
-package com.wtb.application.bin;
+package com.wtb.application.product.bin;
 
-import com.wtb.application.product.barCode.BarCodeBadRequestException;
-import com.wtb.application.product.barCode.BarCodeNotFoundException;
+import com.wtb.domain.product.barCode.BarCodeBadRequestException;
+import com.wtb.domain.product.barCode.BarCodeNotFoundException;
 import com.wtb.domain.product.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

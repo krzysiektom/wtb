@@ -1,4 +1,4 @@
-package com.wtb.application.product.barCode;
+package com.wtb.domain.product.barCode;
 
 import com.wtb.application.product.ProductReadService;
 import com.wtb.domain.product.*;

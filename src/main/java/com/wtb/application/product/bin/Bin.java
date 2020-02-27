@@ -1,4 +1,4 @@
-package com.wtb.application.bin;
+package com.wtb.application.product.bin;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

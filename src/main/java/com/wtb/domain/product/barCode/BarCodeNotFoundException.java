@@ -1,4 +1,4 @@
-package com.wtb.application.product.barCode;
+package com.wtb.domain.product.barCode;
 
 public class BarCodeNotFoundException extends RuntimeException {
     public BarCodeNotFoundException(Long barCode) {

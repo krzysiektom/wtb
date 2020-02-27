@@ -1,6 +1,6 @@
 package com.wtb.application.product;
 
-import com.wtb.application.product.barCode.BarCodeNotFoundException;
+import com.wtb.domain.product.barCode.BarCodeNotFoundException;
 import com.wtb.domain.product.Product;
 import com.wtb.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;

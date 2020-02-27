@@ -2,7 +2,7 @@ package com.wtb.application;
 
 import com.wtb.application.product.ProductWriteService;
 import com.wtb.domain.product.Product;
-import com.wtb.domain.product.ProductExistException;
+import com.wtb.domain.product.exception.ProductExistException;
 import com.wtb.domain.product.ProductRepository;
 import com.wtb.domain.product.TrashBin;
 import org.junit.jupiter.api.Test;

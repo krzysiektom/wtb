@@ -1,7 +1,7 @@
 package com.wtb.application.product;
 
 import com.wtb.domain.product.Product;
-import com.wtb.domain.product.ProductExistException;
+import com.wtb.domain.product.exception.ProductExistException;
 import com.wtb.domain.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

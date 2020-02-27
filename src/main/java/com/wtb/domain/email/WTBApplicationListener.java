@@ -1,8 +1,7 @@
 package com.wtb.domain.email;
 
-import com.wtb.application.mail.ContactDto;
+import com.wtb.application.contact.ContactDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;

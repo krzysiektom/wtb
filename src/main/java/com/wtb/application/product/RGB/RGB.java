@@ -1,4 +1,4 @@
-package com.wtb.application.RGB;
+package com.wtb.application.product.RGB;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

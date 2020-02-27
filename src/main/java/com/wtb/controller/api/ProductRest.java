@@ -1,11 +1,11 @@
 package com.wtb.controller.api;
 
 import com.wtb.application.product.ProductWriteService;
-import com.wtb.application.RGB.RGB;
-import com.wtb.application.RGB.RGBReadService;
+import com.wtb.application.product.RGB.RGB;
+import com.wtb.application.product.RGB.RGBReadService;
 import com.wtb.application.product.ProductReadService;
-import com.wtb.application.bin.Bin;
-import com.wtb.application.bin.BinService;
+import com.wtb.application.product.bin.Bin;
+import com.wtb.application.product.bin.BinService;
 import com.wtb.domain.product.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

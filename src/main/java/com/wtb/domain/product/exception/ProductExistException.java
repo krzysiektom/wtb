@@ -1,4 +1,4 @@
-package com.wtb.domain.product;
+package com.wtb.domain.product.exception;
 
 public class ProductExistException extends RuntimeException{
     public ProductExistException(Long id) {

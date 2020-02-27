@@ -1,4 +1,4 @@
-package com.wtb.domain.product;
+package com.wtb.domain.product.exception;
 
 public class ProductBadRequestException extends RuntimeException {
     public ProductBadRequestException(String id) {

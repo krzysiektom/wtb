@@ -1,6 +1,6 @@
 package com.wtb.domain.email;
 
-import com.wtb.application.mail.ContactDto;
+import com.wtb.application.contact.ContactDto;
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
 

@@ -1,6 +1,6 @@
 package com.wtb.controller.api;
 
-import com.wtb.application.color.ColorService;
+import com.wtb.application.product.color.ColorService;
 import com.wtb.domain.color.Color;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

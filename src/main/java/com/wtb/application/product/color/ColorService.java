@@ -1,4 +1,4 @@
-package com.wtb.application.color;
+package com.wtb.application.product.color;
 
 import com.wtb.domain.color.*;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.wtb.application.mail;
+package com.wtb.application.contact;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,7 +1,7 @@
 package com.wtb.controller;
 
 import com.wtb.application.contact.ContactService;
-import com.wtb.application.mail.ContactDto;
+import com.wtb.application.contact.ContactDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
