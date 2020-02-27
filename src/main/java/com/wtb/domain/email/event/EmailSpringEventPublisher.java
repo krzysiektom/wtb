@@ -1,4 +1,4 @@
-package com.wtb.domain.email;
+package com.wtb.domain.email.event;
 
 import com.wtb.application.contact.ContactDto;
 import lombok.RequiredArgsConstructor;

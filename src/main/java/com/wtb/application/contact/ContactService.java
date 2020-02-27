@@ -1,6 +1,8 @@
 package com.wtb.application.contact;
 
-import com.wtb.domain.email.EmailEvent;
+import com.wtb.domain.email.Email;
+import com.wtb.domain.email.EmailRepository;
+import com.wtb.domain.email.event.EmailEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -11,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class ContactService {
 
-    private ApplicationEventPublisher applicationEventPublisher;
+    private final ApplicationEventPublisher applicationEventPublisher;
+    private final EmailRepository emailRepository;
 
     /**
      * @param contactDto
@@ -21,7 +24,7 @@ public class ContactService {
         if (contactDto.getSendEmail()) {
             applicationEventPublisher.publishEvent(new EmailEvent(contactDto));
         }
+        emailRepository.save(new Email(contactDto));
         return false;
-        //TODO save ContactDto in DB
     }
 }
