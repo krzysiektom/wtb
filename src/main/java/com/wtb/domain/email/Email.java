@@ -27,7 +27,7 @@ public class Email extends BaseEntity {
         this.email = contactDto.getEmail();
         this.name = contactDto.getName();
         this.subject = contactDto.getSubject();
-        this.message= contactDto.getMessage();
+        this.message = contactDto.getMessage();
         this.sendEmail = contactDto.getSendEmail();
     }
 
