@@ -25,7 +25,7 @@ public class ContactController {
     }
 
     @PostMapping("")
-    public String submit(@ModelAttribute @Valid ContactDto contactDto, BindingResult result, Model model) {
+    public String submit(@ModelAttribute @Valid ContactDto contactDto, BindingResult result) {
         if (result.hasErrors()) {
             return "contact";
         }
