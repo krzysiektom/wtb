@@ -23,7 +23,7 @@ public class HomeController {
     }
 
     @GetMapping("/layout")
-    public String layoutPage() {
+    public String layoutPage(Model model) {
         return "layout/layout";
     }
 }
